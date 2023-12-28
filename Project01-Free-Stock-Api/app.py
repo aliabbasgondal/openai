@@ -30,7 +30,7 @@ with st.sidebar:
         else:
             st.error("No chat history")
     elif st.columns(1):
-        st.subheader('Transcribe Vocie into given languages')
+        st.subheader('Translate the chat history')
         select_val = st.radio('Select Language:', ["Urdu", "Punjabi", "French", "German"], index=None)
         if select_val is not None and len(st.session_state.bot.get_messages()) > 0:
             response = st.session_state.bot.translation(select_val)
