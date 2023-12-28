@@ -41,6 +41,7 @@ with st.sidebar:
         if select_val is not None and len(st.session_state.bot.get_messages()) > 0:
             response = st.session_state.bot.translation(select_val)
             st.markdown(response)
+            st.markdown("I have fixed the outuput lenght to save tokens")
 # Display chat messages
 for message in st.session_state.bot.get_messages():
     avatar = USER_AVATAR if message["role"] == "user" else BOT_AVATAR
