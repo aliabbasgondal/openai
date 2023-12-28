@@ -57,11 +57,12 @@ class BotModel:
                         "role": "user",
                         "content": full_response
                         }
-                    ]
+                    ],
+                    temperature=0.7,
+                    max_tokens=64,
+                    top_p=1
                     )
-                print('////////////////////////////////////////////////////////////////////////')    
-                print(full_response)
-                print('////////////////////////////////////////////////////////////////////////')    
+                   
                 return response.choices[0].message.content  
             except: 
                 return "Something went wrong, please try again"
