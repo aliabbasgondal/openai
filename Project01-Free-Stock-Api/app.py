@@ -18,18 +18,24 @@ if "bot" not in st.session_state:
 
 # Sidebar with a button to delete chat history
 with st.sidebar:
-    if st.button("Delete Chat History"):
-        st.session_state["bot"].delete_chat_history()
-    elif st.button("Listen the Chat History"):
-        if(len(st.session_state.bot.get_messages()) > 0):
-            st.session_state.bot.listen_chat_history()
-            if('urdu.mp3'):
-                st.audio('urdu.mp3')
+    st.header("Advance Features")
+    user_selection = st.selectbox("What you Want to Do", ["Listen History", "Translate History", "Delete History"])
+    if user_selection == "Delete History":
+        if(st.button("Delete Chat History")):
+            st.session_state["bot"].delete_chat_history()
+    elif user_selection == "Listen History":
+        
+        if(st.button("Listen the Chat History")):
+            if(len(st.session_state.bot.get_messages()) > 0):
+                st.session_state.bot.listen_chat_history()
+                if('urdu.mp3'):
+                    st.audio('urdu.mp3')
+                    
+                else:
+                    st.error('Something went wrong')
             else:
-                st.error('Something went wrong')
-        else:
-            st.error("No chat history")
-    elif st.columns(1):
+                st.error("No chat history")
+    elif user_selection == 'Translate History':
         st.subheader('Translate the chat history')
         select_val = st.radio('Select Language:', ["Urdu", "Punjabi", "French", "German"], index=None)
         if select_val is not None and len(st.session_state.bot.get_messages()) > 0:
