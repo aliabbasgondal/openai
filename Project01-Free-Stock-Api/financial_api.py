@@ -9,9 +9,10 @@ import requests
 from PIL import Image
 from IPython.display import Image, display
 _ : bool = load_dotenv(find_dotenv()) # read local .env file
-userdata =  dotenv_values(".env")
-FMP_API_KEY : str= userdata.get('FMP_API_KEY')
-os.environ["FMP_API_KEY"] = FMP_API_KEY
+
+load_dotenv(find_dotenv())
+FMP_API_KEY: str = os.environ.get("FMP_API_KEY")
+OPENAI_KEY: str = os.environ.get("OPENAI_API_KEY")
 
 client : OpenAI = OpenAI()
 
