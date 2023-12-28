@@ -2,3 +2,5 @@
 __pycache__
 program.ipynb
 translation.py
+.mypy_cache
+chat_history.db
